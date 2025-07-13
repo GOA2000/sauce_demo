@@ -5,8 +5,8 @@ import { config } from '../../../utils/config';
 // Negative-path: locked_out_user should see an error and remain on login page
 test('locked_out_user sees error on login attempt', async ({ page }) => {
   const login = new LoginPage(page);
-  const expectedErrorMessage= 'Epic sadface: Sorry, this user has been locked out.'
-  let landingPageURL ='';
+  const expectedErrorMessage = 'Epic sadface: Sorry, this user has been locked out.';
+  let landingPageURL = '';
 
   await test.step('Navigate to the login page', async () => {
     await login.goto();

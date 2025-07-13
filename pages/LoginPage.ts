@@ -1,7 +1,6 @@
 import { Page, Locator } from '@playwright/test';
 import { config } from '../utils/config';
 
-
 export class LoginPage {
   readonly page: Page;
   readonly usernameInput: Locator;
@@ -30,5 +29,4 @@ export class LoginPage {
   async getErrorMessage(): Promise<string | null> {
     return this.errorContainer.textContent();
   }
-
 }

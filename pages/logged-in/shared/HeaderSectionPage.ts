@@ -36,7 +36,10 @@ export class HeaderSectionPage {
 
   /** Wait for the header to be visible on the page */
   async waitForLoad(): Promise<this> {
-    await this.page.waitForSelector('[data-test="header-container"]', { state: 'visible', timeout: 5_000 });
+    await this.page.waitForSelector('[data-test="header-container"]', {
+      state: 'visible',
+      timeout: 5_000,
+    });
     return this;
   }
 
@@ -76,7 +79,7 @@ export class HeaderSectionPage {
   }
 
   async getCartBadgeCount(): Promise<number> {
-    if (await this.cartBadge.count() === 0) return 0;
+    if ((await this.cartBadge.count()) === 0) return 0;
     const txt = (await this.cartBadge.textContent())?.trim() || '';
     return txt ? parseInt(txt, 10) : 0;
   }

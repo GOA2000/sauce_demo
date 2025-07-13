@@ -2,7 +2,6 @@
 import { Page, Locator } from '@playwright/test';
 import { config } from '../../utils/config';
 
-
 export class CheckoutInfoPage {
   readonly page: Page;
 
@@ -18,14 +17,14 @@ export class CheckoutInfoPage {
   readonly continueButton: Locator;
 
   constructor(page: Page) {
-    this.page               = page;
-    this.formContainer      = page.locator('[data-test="checkout-info-container"]');
-    this.firstNameInput     = page.locator('[data-test="firstName"]');
-    this.lastNameInput      = page.locator('[data-test="lastName"]');
-    this.postalCodeInput    = page.locator('[data-test="postalCode"]');
-    this.errorContainer     = page.locator('.error-message-container');
-    this.cancelButton       = page.locator('[data-test="cancel"]');
-    this.continueButton     = page.locator('[data-test="continue"]');
+    this.page = page;
+    this.formContainer = page.locator('[data-test="checkout-info-container"]');
+    this.firstNameInput = page.locator('[data-test="firstName"]');
+    this.lastNameInput = page.locator('[data-test="lastName"]');
+    this.postalCodeInput = page.locator('[data-test="postalCode"]');
+    this.errorContainer = page.locator('.error-message-container');
+    this.cancelButton = page.locator('[data-test="cancel"]');
+    this.continueButton = page.locator('[data-test="continue"]');
   }
 
   async goto(): Promise<void> {

@@ -26,5 +26,5 @@ export const config = {
       username: process.env.LOCKED_OUT_USER_USERNAME as string,
       password: process.env.LOCKED_OUT_USER_PASSWORD as string,
     },
-  }
+  },
 };

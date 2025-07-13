@@ -25,7 +25,6 @@ export class CartPage {
   private readonly itemPriceSelector = '[data-test="inventory-item-price"]';
   private readonly removeButtonSelector = 'button[data-test^="remove-"]';
 
-
   constructor(page: Page) {
     this.header = new HeaderSectionPage(page);
     this.page = page;
@@ -34,7 +33,6 @@ export class CartPage {
     this.continueShoppingButton = page.locator('[data-test="continue-shopping"]');
     this.checkoutButton = page.locator('[data-test="checkout"]');
   }
-
 
   async goto(): Promise<void> {
     await this.page.goto(`${config.baseUrl}/cart.html`);
@@ -54,9 +52,13 @@ export class CartPage {
 
     for (let i = 0; i < count; i++) {
       const element = this.cartItems.nth(i);
-      const quantity = parseInt((await element.locator(this.itemQuantitySelector).textContent()) ?? '0', 10);
+      const quantity = parseInt(
+        (await element.locator(this.itemQuantitySelector).textContent()) ?? '0',
+        10,
+      );
       const title = (await element.locator(this.itemTitleSelector).textContent())?.trim() ?? '';
-      const description = (await element.locator(this.itemDescSelector).textContent())?.trim() ?? '';
+      const description =
+        (await element.locator(this.itemDescSelector).textContent())?.trim() ?? '';
       const price = (await element.locator(this.itemPriceSelector).textContent())?.trim() ?? '';
       const removeButton = element.locator(this.removeButtonSelector);
 
@@ -68,7 +70,7 @@ export class CartPage {
 
   async getItemByName(name: string): Promise<CartItem | null> {
     const items = await this.getAllItems();
-    return items.find(item => item.title === name) ?? null;
+    return items.find((item) => item.title === name) ?? null;
   }
 
   async removeItem(name: string): Promise<void> {

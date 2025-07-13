@@ -1,11 +1,10 @@
 import type { Page } from '@playwright/test';
-import {CartPage} from '../pages/logged-in/CartPage'
-
+import { CartPage } from '../pages/logged-in/CartPage';
 
 export class CartHelper {
-  private cartPage: CartPage
+  private cartPage: CartPage;
 
-  constructor() { }
+  constructor() {}
 
   setPage(page: Page) {
     this.cartPage = new CartPage(page);
@@ -13,16 +12,16 @@ export class CartHelper {
 
   async getNumberOfDisplayedItemsInCart(page: Page) {
     this.setPage(page);
-    return this.cartPage.getItemCount()
+    return this.cartPage.getItemCount();
   }
 
   async getCartPageCheckoutItems(page: Page) {
-    this.setPage(page)
-    return await this.cartPage.getAllItems()
+    this.setPage(page);
+    return await this.cartPage.getAllItems();
   }
 
   getCartPageCheckoutItemTitles(cartItems: any[]): any {
-    return cartItems.map(i => i.title);
+    return cartItems.map((i) => i.title);
   }
 
   async removeItemFromCart(name: string) {
@@ -30,7 +29,7 @@ export class CartHelper {
   }
 
   async removeAllItemsFromCart(picks: any[]) {
-    for (const title of picks.map(p => p.title)) {
+    for (const title of picks.map((p) => p.title)) {
       await this.removeItemFromCart(title);
     }
   }
@@ -43,11 +42,11 @@ export class CartHelper {
 
   async clickContinueShoppingButton(page: Page) {
     this.setPage(page);
-    await this.cartPage.continueShopping()
+    await this.cartPage.continueShopping();
   }
 
   async clickCheckoutButton(page: Page) {
     this.setPage(page);
-    await this.cartPage.clickCheckout()
+    await this.cartPage.clickCheckout();
   }
 }
