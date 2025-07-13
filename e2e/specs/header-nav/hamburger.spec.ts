@@ -1,8 +1,6 @@
-// e2e/header-nav/hamburger.spec.ts
 import { test, expect } from '@playwright/test';
 import { HeaderHelper } from '../../../helpers/header-helper';
 import { loginAsStandardUser } from '../../../helpers/auth-helper';
-import { InventoryHelper } from '../../../helpers/inventory-helper';
 
 test.describe('Hamburger menu behavior', () => {
   let headerHelper: HeaderHelper;

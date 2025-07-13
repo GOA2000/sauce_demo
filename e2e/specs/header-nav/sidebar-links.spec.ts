@@ -1,5 +1,4 @@
-// sauce_demo/e2e/specs/header-nav/sidebar-links.spec.ts
-import { test, expect, Page } from '@playwright/test';
+import { test, expect } from '@playwright/test';
 import { HeaderHelper } from '../../../helpers/header-helper';
 import { loginAsStandardUser } from '../../../helpers/auth-helper';
 import { InventoryHelper } from '../../../helpers/inventory-helper';
@@ -13,8 +12,6 @@ test.describe('Sidebar links behavior', () => {
     headerHelper = new HeaderHelper(page);
     inventoryHelper = new InventoryHelper();
 
-    // make sure the menu is closed, then open it
-    //await headerHelper.closeMenu();
     await headerHelper.openMenu();
     await headerHelper.waitForHeaderLoad();
   });

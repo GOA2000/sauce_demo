@@ -3,7 +3,7 @@ import { InventoryPage, Product } from '../pages/logged-in/InventoryPage';
 import { CartPage } from '../pages/logged-in/CartPage';
 
 export class InventoryHelper {
-  private inventoryPage: InventoryPage;
+  private inventoryPage!: InventoryPage;
 
   constructor() {}
 
@@ -20,19 +20,16 @@ export class InventoryHelper {
 
   async getAllProductTitles(page: Page): Promise<string[]> {
     const titles = await this.mapProducts(page, (p) => p.title);
-    console.log('Product titles:', titles);
     return titles;
   }
 
   async getAllProductPrices(page: Page): Promise<string[]> {
     const prices = await this.mapProducts(page, (p) => p.price);
-    console.log('Product prices:', prices);
     return prices;
   }
 
   async getAllProductImageSrcs(page: Page): Promise<string[]> {
     const srcs = await this.mapProducts(page, (p) => p.imageSrc);
-    console.log('Product imageSrcs:', srcs);
     return srcs;
   }
 
@@ -67,6 +64,7 @@ export class InventoryHelper {
     this.setPage(page);
     const product = await this.inventoryPage.getProductByName(productName);
     await product!.addToCartButton.click();
+    return product;
   }
 
   async getProductByName(page: Page, productName: string) {

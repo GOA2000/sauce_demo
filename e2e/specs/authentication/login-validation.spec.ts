@@ -124,7 +124,7 @@ test.describe('Login validation errors', () => {
 
     await test.step('Submit whitespace credentials', async () => {
       const { username, password } = config.users.standard_user;
-      await login.login(` ${username} `, ` ${password} `);
+      await login.login(` ${username} `, `${password}`);
     });
 
     await test.step('Verify whitespace credentials are handled', async () => {

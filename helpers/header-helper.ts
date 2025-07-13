@@ -1,5 +1,5 @@
 // sauce_demo/helpers/header-helper.ts
-import { expect, type Page } from '@playwright/test';
+import { type Page } from '@playwright/test';
 import { HeaderSectionPage } from '../pages/logged-in/shared/HeaderSectionPage';
 
 export class HeaderHelper {

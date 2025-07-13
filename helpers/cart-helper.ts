@@ -2,7 +2,7 @@ import type { Page } from '@playwright/test';
 import { CartPage } from '../pages/logged-in/CartPage';
 
 export class CartHelper {
-  private cartPage: CartPage;
+  private cartPage!: CartPage;
 
   constructor() {}
 

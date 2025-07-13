@@ -1,6 +1,5 @@
-// sauce_demo/pages/logged-in/CheckoutInfoPage.ts
 import { Page, Locator } from '@playwright/test';
-import { config } from '../../utils/config';
+import { config } from '../../../utils/config';
 
 export class CheckoutInfoPage {
   readonly page: Page;

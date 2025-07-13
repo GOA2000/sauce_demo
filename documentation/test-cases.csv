@@ -1,0 +1,295 @@
+TC_ID,Functionality,Scenario,Description,Preconditions,Test Steps,Tested by,Expected Outcome
+1,Authentication,Valid user successfull log in,After filling in the correct username and password the user is successfully logged in,Valid previously created user,"1. Go to saucedemo.com 
+2. Fill in previously created valid user
+3. Click Login button
+4. You will successfully land on the products page",Gorjan Kalauzovic,Positive
+2,Authentication,Locked out user restricted login,After filling in the locked out username and password the user is not logged in and can see a reason for not being able to log in.,Previously created locked out user,"1. Go to saucedemo.com 
+2. Fill in previously created locked out user
+3. Click Login
+4. User is displayed a message: ""Epic sadface: Sorry, this user has been locked out.""
+5. User is not logged in",Gorjan Kalauzovic,Negative
+3,Authentication,User with missing username is not allowed to log in.,After filling the login form with no username but existing password the user is not logged in and apropriate message is displayed,none,"1. Go to saucedemo.com 
+2. Fill in password field
+3. Click Login
+4. Validate message ""Epic sadface: Username is required"" is displayed 
+5. User is not logged in.",Gorjan Kalauzovic,Negative
+4,Authentication,User with missing password not allowed to log in.,After filling the login form with username but no password the user is not logged in and apropriate message is displayed,none,"1. Go to saucedemo.com 
+2. Fill in username field
+3. Click Login
+4. Validate message ""Epic sadface: Password is required"" is displayed 
+5. User is not logged in.",Gorjan Kalauzovic,Negative
+5,Authentication,User with missing username and password is not allowed to log in.,After filling the login form with no username and no password the user is not logged in and apropriate message is displayed,none,"1. Go to saucedemo.com 
+2. Fill in password field
+3. Click Login
+4. Validate message ""Epic sadface: Username is required"" is displayed 
+5. User is not logged in.",Gorjan Kalauzovic,Negative
+6,Authentication,Non existing user is not allowed to log in,After filling the login form with non existing user the user is not logged in and apropriate message is displayed,"username: someRandomDude
+password: somerRandomPass","1. Go to saucedemo.com 
+2. Fill in username and password provided in the prerequisites section
+3. Click Login
+4. Validate message ""Epic sadface: Username and password do not match any user in this service"" is displayed 
+5. User is not logged in.",Gorjan Kalauzovic,Negative
+7,Authentication,Non existing user is not allowed to log in,After filling the login form with non existing user the user is not logged in and apropriate message is displayed,"username: someRandomDude
+password: somerRandomPass","1. Go to saucedemo.com 
+2. Fill in username and password provided in the prerequisites section
+3. Click Login
+4. Validate message ""Epic sadface: Username and password do not match any user in this service"" is displayed 
+5. User is not logged in.",Gorjan Kalauzovic,Negative
+8,Authentication,Valid user with sorounded by white space is allowed to log in,"After filling the login form with a username and password, but the username is sorounded by white space, the user is logged in",Valid previously created user,"1. Go to saucedemo.com 
+2. Fill in username and password of a valid user.
+3. Click Login
+4. User should be successfully authenticated.",Gorjan Kalauzovic,Positive
+9,Authentication,Valid user with uppercase letters mixed with lowercase in username is not allowed to log in,"After filling the login form with a valid username with uppercase letters and normal password,the user is not allowed to log in",Valid previously created user,"1. Go to saucedemo.com 
+2. Fill in username and password provided in the prerequisites section
+3. Click Login
+4. Validate message """"Epic sadface: Username and password do not match any user in this service"""" is displayed 
+5. User is not logged in.",Gorjan Kalauzovic,Negative
+10,Authentication,Xss payload is rejected by login form,After filling the login form with xss payload in the username text field and normal password in password field the login is refused and error mesage is displayed,XSS injectable code ie.:<script>alert('xss')</script>,"1. Go to saucedemo.com 
+2. Fill in username with xss code, and password
+3. Click Login
+4. User should not be logged in.",Gorjan Kalauzovic,Negative
+11,Authentication,SQL injection is rejected by login form,,,,Gorjan Kalauzovic,Negative
+12,Authentication,Username cannot process non us characters,,,,Gorjan Kalauzovic,Positive
+13,Authentication,Username and Password have limits on field size,,,,Gorjan Kalauzovic,Positive
+14,Products Page,Login displays products correctly,"After loging in the user should be on the products page, with products displayed",Valid previously created user,"1. Go to saucedemo.com 
+2. Fill in previously created valid user
+3. Click Login button
+4. You will successfully land on the products page
+5. Check if products are visible.",Gorjan Kalauzovic,Positive
+15,Products Page,Sorting products by name ascending works,"After loging in the user should be on the products page, with products displayed, the user should go to the filtering section and select sort by name ascending and check if products are properly ordered.",Valid previously created user,"1. Go to saucedemo.com 
+2. Fill in previously created valid user
+3. Click Login button
+4. You will successfully land on the products page
+5. Check if products are visible.
+6. Select Filter ordering by name asc
+7. Validate products are correctly ordered",Gorjan Kalauzovic,Positive
+16,Products Page,Sorting products by name descending works,"After loging in the user should be on the products page, with products displayed, the user should go to the filtering section and select sort by name descending and check if products are properly ordered.",Valid previously created user,"1. Go to saucedemo.com 
+2. Fill in previously created valid user
+3. Click Login button
+4. You will successfully land on the products page
+5. Check if products are visible.
+6. Select Filter ordering by name desc
+7. Validate products are correctly ordered",Gorjan Kalauzovic,Positive
+17,Products Page,Sorting products by price ascending works,"After loging in the user should be on the products page, with products displayed, the user should go to the filtering section and select sort by price ascending and check if products are properly ordered.",Valid previously created user,"1. Go to saucedemo.com 
+2. Fill in previously created valid user
+3. Click Login button
+4. You will successfully land on the products page
+5. Check if products are visible.
+6. Select Filter ordering by price asc
+7. Validate products are correctly ordered",Gorjan Kalauzovic,Positive
+18,Products Page,Sorting products by price descending works,"After loging in the user should be on the products page, with products displayed, the user should go to the filtering section and select sort by price descending and check if products are properly ordered.",Valid previously created user,"1. Go to saucedemo.com 
+2. Fill in previously created valid user
+3. Click Login button
+4. You will successfully land on the products page
+5. Check if products are visible.
+6. Select Filter ordering by price desc
+7. Validate products are correctly ordered",Gorjan Kalauzovic,Positive
+19,Products Page,Validate all poducts have unique img src's,"After loging in the user should be on the products page, with products displayed, the user should check if every product has unique src image",Valid previously created user,"1. Go to saucedemo.com 
+2. Fill in previously created valid user
+3. Click Login button
+4. You will successfully land on the products page
+5. Check if products are visible.
+6. Validate every product has unique img src displayed",Gorjan Kalauzovic,Positive
+20,Cart,"Validate default state, post login the cart is empty",Validate that after logging in the default state is empty cart,Valid previously created user,"1. Go to saucedemo.com 
+2. Fill in previously created valid user
+3. Click Login button
+4. You will successfully land on the products page
+5. Check if products are visible and none are pre-selected.
+6. Go to cart
+7. Validate cart is empty, badge is empty",Gorjan Kalauzovic,Positive
+21,Cart,Cart peristance after logout,"Validate if loging out, persists the cart, after reloging in ",Valid previously created user,"1. Go to saucedemo.com 
+2. Fill in previously created valid user
+3. Click Login button
+4. You will successfully land on the products page
+5. Check if products are visible and none are pre-selected.
+6. Add single item to cart
+7. Logout
+8. Login 
+9 Check if cart still contains the preselected item.",Gorjan Kalauzovic,Positive
+22,Cart,Validate if user can add single product to cart,"After loging in the user should be on the products page, with products displayed, the user should add 1 product to cart and check the badge and contents of cart.",Valid previously created user,"1. Go to saucedemo.com  
+2. Fill in previously created valid user
+3. Click Login button
+4. You will successfully land on the products page
+5. Check if products are visible.
+6. Add single product to cart
+7. Validate Badge contains number of items added
+8. Go to cart see if added items are shown.",Gorjan Kalauzovic,Positive
+23,Cart,Validate if user can add multiple products to cart,"After loging in the user should be on the products page, with products displayed, the user should add multple products to cart and check the badge and contents of cart.",Valid previously created user,"1. Go to saucedemo.com 
+2. Fill in previously created valid user
+3. Click Login button
+4. You will successfully land on the products page
+5. Check if products are visible.
+6. Add multiple products to cart
+7. Validate Badge contains number of items added
+8. Go to cart see if added items are shown.",Gorjan Kalauzovic,Positive
+24,Cart,Validate if continue shopping button in cart returns customer to products list with persisting preselected items,"After loging in the user should be on the products page, with products displayed, the user should add item to cart, open the cart and select the ""continue shopping"" button which should return him to the products page where he can continue adding items to cart",Valid previously created user,"1. Go to saucedemo.com 
+2. Fill in previously created valid user
+3. Click Login button
+4. You will successfully land on the products page
+5. Check if products are visible.
+6. Add multiple products to cart
+7. Validate Badge contains number of items added
+8. Go to cart see if added items are shown.
+9. Click 'Continue shopping' button
+10. Validate you are back on products page and preselected items are still selected",Gorjan Kalauzovic,Positive
+25,Cart,Removing item from cart is feasable,"After loging in the user should be on the products page, with products displayed, the user should add item to cart, open the cart and remove item from cart validate the cart is empty, cart badge has no items presected, and returning to products should show no items have been preselected",Valid previously created user,"1. Go to saucedemo.com 
+2. Fill in previously created valid user
+3. Click Login button
+4. You will successfully land on the products page
+5. Check if products are visible.
+6. Add single item to cart
+7. Go to cart see if added items are shown.
+9. Remove item from Cart
+10. Validate if cart is empty
+11. Validate if cart badge shows no items
+12. Return to products page
+13. Validate no products have been added to cart",Gorjan Kalauzovic,Positive
+26,Cart,Removing multiple items from cart is feasable,"After loging in the user should be on the products page, with products displayed, the user should add item to cart, open the cart and remove all items from cart validate the cart is empty, cart badge has no items presected, and returning to products should show no items have been preselected",Valid previously created user,"1. Go to saucedemo.com 
+2. Fill in previously created valid user
+3. Click Login button
+4. You will successfully land on the products page
+5. Check if products are visible.
+6. Add multipe items to cart
+7. Go to cart see if added items are shown.
+9. Remove all items from Cart
+10. Validate if cart is empty
+11. Validate if cart badge shows no items
+12. Return to products page
+13. Validate no products have been added to cart",Gorjan Kalauzovic,Positive
+27,Cart,Removing single item from cart when multiple items have been selected.,"After loging in the user should be on the products page, with products displayed, the user should add multiple items to cart, open the cart and remove single item from cart validate the cart is not empty, cart badge has the remaining items in cart displayed, and returning to products should show only items which are in cart as in cart.",Valid previously created user,"1. Go to saucedemo.com 
+2. Fill in previously created valid user
+3. Click Login button
+4. You will successfully land on the products page
+5. Check if products are visible.
+6. Add multiple items to cart
+7. Go to cart see if added items are shown.
+9. Remove item from Cart
+10. Validate if cart contains other items except for removed item
+11. Validate if cart badge shows the remaining items number
+12. Return to products page
+13. Validate that the items in cart are persisted on the products UI",Gorjan Kalauzovic,Positive
+28,Checkout,Checkout with single item successfully,After loging in the user should add 1 item to cart and complete the checkout process and successfully complete the order,Valid previously created user,"1. Go to saucedemo.com 
+2. Fill in previously created valid user
+3. Click Login button
+4. You will successfully land on the products page
+5. Check if products are visible.
+6. Add single item to cart
+7. Go to cart see if added items are shown.
+8. Click ""Checkout Button""
+9. Enter First Name
+10. Enter Last Name
+11. Enter Zip/Postal code
+12. Click ""Continue"" button.
+13. Review the order overview for contents etc.
+14. Click ""Finish button""
+15. Validate Order Complete has been displayed",Gorjan Kalauzovic,Positive
+29,Checkout,Checkout with multiple items successfully,After loging in the user should add mutliple items  to cart and complete the checkout process and successfully complete the order,Valid previously created user,"1. Go to saucedemo.com 
+2. Fill in previously created valid user
+3. Click Login button
+4. You will successfully land on the products page
+5. Check if products are visible.
+6. Add multiple items to cart
+7. Go to cart see if added items are shown.
+8. Click ""Checkout Button""
+9. Enter First Name
+10. Enter Last Name
+11. Enter Zip/Postal code
+12. Click ""Continue"" button.
+13. Review the order overview for contents etc.
+14. Click ""Finish button""
+15. Validate Order Complete has been displayed",Gorjan Kalauzovic,Positive
+30,Checkout,Checkout with missing first name is not permited.,After loging in the user should add single item to cart  and when providing details should not enter the first name,Valid previously created user,"1. Go to saucedemo.com 
+2. Fill in previously created valid user
+3. Click Login button
+4. You will successfully land on the products page
+5. Check if products are visible.
+6. Add multiple items to cart
+7. Go to cart see if added items are shown.
+8. Click ""Checkout Button""
+9. Enter Last Name
+10. Enter Zip/Postal code
+11. Click ""Continue"" button
+12. Validate error message is displayed: ""First Name is required""",Gorjan Kalauzovic,Negative
+31,Checkout,Checkout with missing last name is not permited.,After loging in the user should add single item to cart  and when providing details should not enter the last name,Valid previously created user,"1. Go to saucedemo.com 
+2. Fill in previously created valid user
+3. Click Login button
+4. You will successfully land on the products page
+5. Check if products are visible.
+6. Add multiple items to cart
+7. Go to cart see if added items are shown.
+8. Click ""Checkout Button""
+9. Enter First Name
+10. Enter Zip/Postal code
+11. Click ""Continue"" button
+12. Validate error message is displayed:'Last Name is required'",Gorjan Kalauzovic,Negative
+32,Checkout,Checkout with missing zip/postal code  is not permited.,After loging in the user should add single item to cart  and when providing details should not enter the zip/postal code,Valid previously created user,"1. Go to saucedemo.com 
+2. Fill in previously created valid user
+3. Click Login button
+4. You will successfully land on the products page
+5. Check if products are visible.
+6. Add multiple items to cart
+7. Go to cart see if added items are shown.
+8. Click ""Checkout Button""
+9. Enter First Name
+10. Enter Last Name 
+11. Click ""Continue"" button
+12. Validate error message is displayed:'Postal Code is required'",Gorjan Kalauzovic,Negative
+33,Checkout,"Checkout with missing first name, last name,  zip/postal code  is not permited.","After loging in the user should add single item to cart  and when providing details should not enter the first name, lastname and zip/postal code",Valid previously created user,"1. Go to saucedemo.com 
+2. Fill in previously created valid user
+3. Click Login button
+4. You will successfully land on the products page
+5. Check if products are visible.
+6. Add multiple items to cart
+7. Go to cart see if added items are shown.
+8. Click ""Checkout Button""
+9. Click ""Continue"" button
+10. Validate error message is displayed:'First Name is required'",Gorjan Kalauzovic,Negative
+34,Navigation,Sidebar should be closed by default,After loging in the sidebar by default should be closed,Valid previously created user,"1. Go to saucedemo.com 
+2. Fill in previously created valid user
+3. Click Login button
+4. You will successfully land on the products page
+5. Validate the sidebar is not opened",Gorjan Kalauzovic,Positive
+35,Navigation,Clicking the hamburger icon opens the sidebar,"After loging in , user clicking the hamburger icon, should open the side menu.",Valid previously created user,"1. Go to saucedemo.com 
+2. Fill in previously created valid user
+3. Click Login button
+4. You will successfully land on the products page
+5. User should click the hamburger badge
+6. Validate the menu has opened",Gorjan Kalauzovic,Positive
+36,Navigation,Clicking the X icon on side menu should close the sidebar,"After loging in , user clicking the hamburger icon, should open the side menu, clicking the X icon on side menu should close the side menu",Valid previously created user,"1. Go to saucedemo.com 
+2. Fill in previously created valid user
+3. Click Login button
+4. You will successfully land on the products page
+5. User should click the hamburger badge
+6. User should click the X icon on side menu
+7. The side menu should close",Gorjan Kalauzovic,Positive
+37,Navigation,"Clicking the ""All Items"" link in side menu returns the user to the inventory","After loging in , user clicking the hamburger icon will open the side menu, clicking ""All Items"" link should return the user to the inventory.",Valid previously created user,"1. Go to saucedemo.com 
+2. Fill in previously created valid user
+3. Click Login button
+4. You will successfully land on the products page
+5. Go to cart
+6. Open Hamburger Menu
+7. Click ""All Items"" 
+8. Confirm you have returned to the inventory",Gorjan Kalauzovic,Positive
+38,Navigation,"Clicking the “About” link in side menu takes the user to the Sauce Labs ""About"" page","After loging in , user clicking the hamburger icon will open the side menu, clicking ""About"" link should take the user to the Sauce Labs About page",Valid previously created user,"1. Go to saucedemo.com 
+2. Fill in previously created valid user
+3. Click Login button
+4. You will successfully land on the products page
+5. Open Hamburger Menu
+6. Click ""About"" link
+8. Confirm you have been taken to the Sauce Labs About page.",Gorjan Kalauzovic,Positive
+39,Navigation,Clicking the “Logout” link in side menu takes the login screen,"After loging in , user clicking the hamburger icon will open the side menu, clicking ""Logout"" link should take the user to the Login page",Valid previously created user,"1. Go to saucedemo.com 
+2. Fill in previously created valid user
+3. Click Login button
+4. You will successfully land on the products page
+5. Open Hamburger Menu
+6. Click ""Logout"" link
+8. Confirm you have been taken to the Login Page",Gorjan Kalauzovic,Positive
+40,Navigation,Clicking the “Reset App State” link in side menu resets the page state,"After loging in ,user should add at least one item to cart,  user clicking the hamburger icon will open the side menu, clicking ""Reset App State"" link should reset the cart badge, and cart contents",Valid previously created user,"1. Go to saucedemo.com 
+2. Fill in previously created valid user
+3. Click Login button
+4. You will successfully land on the products page
+5. Add single item to cart
+6. Confirm cart badge contains 1 item
+5. Open Hamburger Menu
+6. Click ""Reset App State"" link
+8. Confirm the cart badge has been reset.",Gorjan Kalauzovic,Positive
