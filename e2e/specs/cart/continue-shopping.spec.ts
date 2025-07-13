@@ -24,7 +24,6 @@ test.describe('Cart “Continue Shopping” button', () => {
 
     await test.step('UI shows "Remove" on that item', async () => {
       const product = await inventoryHelper.getProductByName(page, productName);
-      console.log(JSON.stringify(product, null, 4));
     });
 
     await test.step('Cart badge counter increments to 1', async () => {
