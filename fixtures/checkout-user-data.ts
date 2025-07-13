@@ -31,6 +31,5 @@ export const CHECKOUT_USERS = {
   },
 } as const;
 
-
 export type CheckoutUserKey = keyof typeof CHECKOUT_USERS;
-export type CheckoutUser = typeof CHECKOUT_USERS[CheckoutUserKey];
+export type CheckoutUser = (typeof CHECKOUT_USERS)[CheckoutUserKey];

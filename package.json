@@ -2,7 +2,11 @@
   "name": "sauce_demo",
   "version": "1.0.0",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "test": "playwright test",
+    "format": "prettier --write \"**/*.ts\"",
+    "format:check": "prettier --check \"**/*.ts\""
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -10,7 +14,8 @@
   "devDependencies": {
     "@playwright/test": "^1.54.1",
     "@types/dotenv": "^6.1.1",
-    "@types/node": "^24.0.13"
+    "@types/node": "^24.0.13",
+    "prettier": "^3.6.2"
   },
   "dependencies": {
     "dotenv": "^17.2.0"

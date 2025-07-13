@@ -12,7 +12,6 @@ import { defineConfig, devices } from '@playwright/test';
  * See https://playwright.dev/docs/test-configuration.
  */
 export default defineConfig({
-
   testDir: './e2e',
   /* Run tests in files in parallel */
   fullyParallel: false,
@@ -31,7 +30,7 @@ export default defineConfig({
     // JUnit XML, useful for CI integrations
     ['junit', { outputFile: 'test-results/results.xml' }],
     // the GitHub reporter—annotates failures in PRs
-    ['github']
+    ['github'],
   ],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
