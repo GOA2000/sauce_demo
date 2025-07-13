@@ -1,0 +1,48 @@
+name: Playwright Tests
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  test:
+    timeout-minutes: 60
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: lts/*
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps
+
+      - name: Run Playwright tests with reporting
+        # runs with:
+        #  • github → annotates failures in the PR
+        #  • html   → generates an HTML report in playwright-report/
+        #  • junit  → emits XML to test-results/results.xml
+        run: npx playwright test --reporter=github,html,junit
+
+      - name: Upload HTML report
+        if: ${{ always() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-html-report
+          path: playwright-report/
+          retention-days: 30
+
+      - name: Upload JUnit results
+        if: ${{ always() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: junit-results
+          path: test-results/results.xml
+          retention-days: 30
