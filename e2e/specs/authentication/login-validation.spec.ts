@@ -2,7 +2,6 @@ import { test, expect } from '@playwright/test';
 import { LoginPage } from '../../../pages/LoginPage';
 import { config } from '../../../utils/config';
 
-
 test.describe('Login validation errors', () => {
     const missingUsernameErrorMsg = 'Epic sadface: Username is required'
     const noPasswordErrorMsg = 'Epic sadface: Password is required'
